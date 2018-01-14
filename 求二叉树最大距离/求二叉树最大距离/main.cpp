@@ -20,16 +20,20 @@ struct TreeNode {
 };
 
 // 求二叉树最大距离
-int longestDistanceForBinaryTree(TreeNode *root) {
-    int leftDistance = 0;
-    int rightDistance = 0;
-    if (root->left) {
-        leftDistance = longestDistanceForBinaryTree(root->left) + 1;
+int getDeepth(TreeNode *root, int &result) {
+    if (root == NULL) {
+        return 0;
     }
-    if (root->right) {
-        rightDistance = longestDistanceForBinaryTree(root->right) + 1;
-    }
-    return leftDistance + rightDistance;
+    int leftDeepth = getDeepth(root->left, result);
+    int rightDeepth = getDeepth(root->right, result);
+    result = max(result, leftDeepth + rightDeepth + 1);
+    return max(leftDeepth, rightDeepth) + 1;
+}
+
+int longestDistance(TreeNode *root) {
+    int result = 0;
+    getDeepth(root, result);
+    return result;
 }
 
 int main(int argc, const char * argv[]) {
