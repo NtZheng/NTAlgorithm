@@ -10,11 +10,18 @@
 
 using namespace std;
 
-// 交换两个数（不采用临时变量）
-void swap(int &a, int &b) {
+// 交换两个数（异或）
+void swap1(int &a, int &b) {
     a = a ^ b;
     b = a ^ b;
     a = a ^ b;
+}
+
+// 交换两个数（加法）
+void swap2(int &a, int &b) {
+    a = a + b;
+    b = a - b;
+    a = a - b;
 }
 
 int main(int argc, const char * argv[]) {
