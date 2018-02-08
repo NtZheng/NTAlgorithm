@@ -18,6 +18,9 @@ void swap1(int &a, int &b) {
 }
 
 // 交换两个数（加法）
+/*
+ 该方法可能会出现溢出
+ */
 void swap2(int &a, int &b) {
     a = a + b;
     b = a - b;
